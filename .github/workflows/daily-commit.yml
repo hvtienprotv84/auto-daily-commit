@@ -1,1 +1,26 @@
+name: Daily Commit
 
+on:
+  schedule:
+    - cron: '0 0 * * *'   # chạy mỗi ngày lúc 00:00 UTC (~7h sáng VN)
+  workflow_dispatch:      # cho phép chạy thủ công
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Update README
+        run: |
+          echo "." >> README.md
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "daily commit" || echo "no changes"
+          git push
