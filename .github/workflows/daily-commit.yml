@@ -2,8 +2,8 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # chạy mỗi ngày lúc 00:00 UTC (~7h sáng VN)
-  workflow_dispatch:      # cho phép chạy thủ công
+    - cron: '10 15 * * *'   # 22:10 VN mỗi ngày
+  workflow_dispatch:
 
 jobs:
   commit:
@@ -15,7 +15,7 @@ jobs:
 
       - name: Update README
         run: |
-          echo "." >> README.md
+          echo "hello" >> README.md
 
       - name: Commit & Push
         run: |
