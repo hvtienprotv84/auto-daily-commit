@@ -2,7 +2,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '10 15 * * *'   # 22:10 VN mỗi ngày
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
